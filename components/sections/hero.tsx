@@ -21,7 +21,7 @@ export default function Hero() {
         delayChildren: 0.2
       }
     }
-  };
+  } as const;
 
   const itemVariants = {
     hidden: { opacity: 0, x: -20 },
@@ -30,7 +30,7 @@ export default function Hero() {
       x: 0,
       transition: { duration: 0.5, ease: "easeOut" }
     }
-  };
+  } as const;
 
   return (
     <SectionWrapper id="home" className="min-h-screen flex items-center pt-24">

@@ -86,8 +86,8 @@ const projects: Project[] = [
       description: "Modern portfolio website with robust animations, SEO optimization, and responsive design. Built with the latest frontend technologies to showcase my work.",
       tags: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
       type: "Frontend",
-      sourceLink: "#",
-      liveLink: "#",
+      sourceLink: "https://github.com/m-rayan-hassan/portfolio",
+      liveLink: "https://dev-rayan.vercel.app/",
       image: "/portfolio.png" 
   }
 ];

@@ -6,9 +6,8 @@ import { cn } from "@/lib/utils";
 import { ExternalLink, Github, Play } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
-
+// ... (keep your interfaces and data array exactly as they are) ...
 interface Project {
   title: string;
   date: string;
@@ -24,7 +23,8 @@ interface Project {
 }
 
 const projects: Project[] = [
-  {
+    // ... (Your projects data here) ...
+    {
     title: "UltimateFit - AI-Powered Fitness Web App",
     date: "Full-Stack Web App",
     role: "Lead Developer",
@@ -34,7 +34,7 @@ const projects: Project[] = [
     featured: true,
     sourceLink: "https://github.com/m-rayan-hassan/ultimatefit",
     liveLink: "https://ultimatefit.vercel.app/",
-    image: "/ultimatefit.png", // Using existing image for demo
+    image: "/ultimatefit.png", 
     videoLink: "https://www.linkedin.com/posts/muhammad-rayan-hassan-ab6a93327_ai-nextjs-openai-activity-7382766828151914496-x7Yb?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFKQW2oBomFIES9qF1JBmP0gcbhTjVQWKhg"
   },
   {
@@ -47,7 +47,7 @@ const projects: Project[] = [
     featured: false,
     sourceLink: "https://github.com/m-rayan-hassan/feedbackvault",
     liveLink: "https://thefeedbackvault.vercel.app/dashboard",
-    image: "/feedbackvault.png", // Using existing image for demo
+    image: "/feedbackvault.png",
     videoLink: "https://www.linkedin.com/posts/muhammad-rayan-hassan-ab6a93327_nextjs-fullstack-typescript-activity-7370379989713723392-BROE?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFKQW2oBomFIES9qF1JBmP0gcbhTjVQWKhg"
   },
   {
@@ -58,7 +58,6 @@ const projects: Project[] = [
     tags: ["Node.js", "Express", "MongoDB", "Stripe API"],
     type: "Backend",
     sourceLink: "https://github.com/m-rayan-hassan/LMS-PaymentGateway",
-    // No live link for this backend system
   },
   {
     title: "Smart Inventory & Sales System with Dynamic Price Optimization",
@@ -88,7 +87,7 @@ const projects: Project[] = [
       type: "Frontend",
       sourceLink: "#",
       liveLink: "#",
-      image: "/portfolio.png" // using existing image for demo
+      image: "/portfolio.png" 
   }
 ];
 
@@ -102,7 +101,9 @@ export default function Projects() {
     : projects.filter(p => p.type.includes(activeCategory) || (activeCategory === "Backend" && p.tags.includes("Spring Boot")) || (activeCategory === "Frontend" && p.tags.includes("React")));
 
   return (
-    <SectionWrapper id="projects" className="py-24">
+    <SectionWrapper id="projects" className="py-24 overflow-hidden"> 
+      {/* Added overflow-hidden to wrapper to prevent scrollbar flickering */}
+      
       <div className="text-center mb-16 space-y-4">
         <h2 className="text-4xl md:text-5xl font-bold text-white">
           Featured <span className="text-neon-cyan">Projects</span>
@@ -129,14 +130,9 @@ export default function Projects() {
 
       <div className="grid grid-cols-1 gap-8">
         {filteredProjects.map((project, idx) => (
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-            key={idx} 
-            className="group relative bg-zinc-900/50 border border-white/5 rounded-2xl p-6 md:p-8 hover:border-neon-cyan/30 transition-all hover:bg-zinc-900/80 flex flex-col md:flex-row gap-8"
+          <div 
+            key={`${project.title}-${idx}`}
+            className="group relative bg-zinc-900/50 border border-white/5 rounded-2xl p-6 md:p-8 hover:border-neon-cyan/30 transition-all hover:bg-zinc-900/80 hover:scale-[1.02] flex flex-col md:flex-row gap-8"
           >
             {/* Project Image */}
             <div className="w-full md:w-1/3 aspect-video bg-zinc-950 rounded-xl border border-white/5 flex items-center justify-center relative overflow-hidden group-hover:shadow-[0_0_20px_rgba(0,240,255,0.1)] transition-shadow">
@@ -146,6 +142,7 @@ export default function Projects() {
                    alt={project.title} 
                    fill 
                    className="object-contain"
+                   sizes="(max-width: 768px) 100vw, 33vw" // Optimization for mobile loading
                  />
                ) : (
                  <>
@@ -216,7 +213,7 @@ export default function Projects() {
                   )}
                </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </SectionWrapper>

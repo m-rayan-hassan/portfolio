@@ -6,31 +6,32 @@ import SectionWrapper from "@/components/ui/section-wrapper";
 import { Github, Linkedin, Instagram, Twitter, Youtube } from "lucide-react";
 import Link from "next/link";
 // Removed unused TypeAnimation import
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 import { TypeAnimation } from 'react-type-animation';
 import HeroVectorAnimation from "@/components/ui/hero-vector-animation";
 
-export default function Hero() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
     }
-  } as const;
+  }
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { 
-      opacity: 1, 
-      x: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
-  } as const;
+const itemVariants: Variants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+};
+
+export default function Hero() {
 
   return (
     <SectionWrapper id="home" className="min-h-screen flex items-center pt-24">

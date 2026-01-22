@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { ExternalLink, Github, Play } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 // ... (keep your interfaces and data array exactly as they are) ...
 interface Project {
@@ -128,11 +129,19 @@ export default function Projects() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-8">
+      <motion.div 
+        layout
+        className="grid grid-cols-1 gap-8"
+      >
         {filteredProjects.map((project, idx) => (
-          <div 
+          <motion.div 
+            layout
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: idx * 0.1 }}
             key={`${project.title}-${idx}`}
-            className="group relative bg-zinc-900/50 border border-white/5 rounded-2xl p-6 md:p-8 hover:border-neon-cyan/30 transition-all hover:bg-zinc-900/80 hover:scale-[1.02] flex flex-col md:flex-row gap-8"
+            className="group relative bg-zinc-900/50 border border-white/5 rounded-2xl p-6 md:p-8 hover:border-neon-cyan/30 transition-all hover:bg-zinc-900/80 hover:scale-[1.01] flex flex-col md:flex-row gap-8"
           >
             {/* Project Image */}
             <div className="w-full md:w-1/3 aspect-video bg-zinc-950 rounded-xl border border-white/5 flex items-center justify-center relative overflow-hidden group-hover:shadow-[0_0_20px_rgba(0,240,255,0.1)] transition-shadow">
@@ -213,9 +222,9 @@ export default function Projects() {
                   )}
                </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </SectionWrapper>
   );
 }

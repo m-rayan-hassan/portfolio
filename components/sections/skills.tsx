@@ -110,7 +110,7 @@ export default function Skills() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.03 }}
+            whileHover={{ y: -5 }}
             transition={{ duration: 0.3, delay: idx * 0.1 }}
             key={idx}
             className={`p-6 rounded-2xl bg-zinc-900/50 border ${category.border} hover:bg-zinc-900/80 transition-colors group`}
@@ -119,12 +119,19 @@ export default function Skills() {
 
             <div className="grid grid-cols-2 gap-4">
               {category.skills.map((skill, sIdx) => (
-                <div key={sIdx} className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors">
+                <motion.div 
+                  key={sIdx} 
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (idx * 0.1) + (sIdx * 0.05) }}
+                  className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors"
+                >
                   <skill.icon className={`w-6 h-6 ${category.color}`} />
                   <span className="text-zinc-300 font-medium text-sm">
                      {skill.name}
                   </span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>

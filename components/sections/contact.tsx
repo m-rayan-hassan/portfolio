@@ -67,15 +67,32 @@ export default function Contact() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Left Side: Illustration / Text */}
         <div className="space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-bold text-white"
+            >
                 Let's Work Together
-            </h2>
-            <p className="text-zinc-400 text-lg leading-relaxed">
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-zinc-400 text-lg leading-relaxed"
+            >
                 Have an idea? Let's turn it into reality. Whether you need a full-stack application, a stunning website, or AI integration, I'm here to help.
-            </p>
+            </motion.p>
             
             <div className="space-y-6 pt-4">
-                <div className="flex items-center gap-4">
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="flex items-center gap-4"
+                >
                     <div className="w-12 h-12 rounded-full bg-neon-cyan/10 flex items-center justify-center text-neon-cyan">
                         <Mail className="w-5 h-5" />
                     </div>
@@ -83,8 +100,14 @@ export default function Contact() {
                         <p className="text-sm text-zinc-500">Email</p>
                         <p className="text-white font-medium">rayanhassan200691@gmail.com</p>
                     </div>
-                </div>
-                <div className="flex items-center gap-4">
+                </motion.div>
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  className="flex items-center gap-4"
+                >
                     <div className="w-12 h-12 rounded-full bg-neon-purple/10 flex items-center justify-center text-neon-purple">
                         <MapPin className="w-5 h-5" />
                     </div>
@@ -92,21 +115,33 @@ export default function Contact() {
                         <p className="text-sm text-zinc-500">Location</p>
                         <p className="text-white font-medium">Remote / Worldwide</p>
                     </div>
-                </div>
+                </motion.div>
             </div>
 
             {/* Space Illustration Placeholder */}
-            <div className="relative mt-8 h-64 w-full bg-space-blue-dark/20 rounded-2xl overflow-hidden border border-white/5 flex items-center justify-center group">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="relative mt-8 h-64 w-full bg-space-blue-dark/20 rounded-2xl overflow-hidden border border-white/5 flex items-center justify-center group"
+            >
                  <div className="absolute inset-0 bg-stars-pattern opacity-50" />
                  <div className="text-center group-hover:scale-105 transition-transform duration-500">
                     <span className="text-4xl">🚀</span>
                     <p className="mt-4 text-neon-cyan font-mono text-sm">Ready for liftoff?</p>
                  </div>
-            </div>
+            </motion.div>
         </div>
 
         {/* Right Side: Form */}
-        <div className="bg-zinc-900/50 border border-white/5 p-8 rounded-3xl backdrop-blur-sm">
+        <motion.div 
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="bg-zinc-900/50 border border-white/5 p-8 rounded-3xl backdrop-blur-sm"
+        >
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
                     <label className="text-sm font-medium text-zinc-400">Name <span className="text-red-500">*</span></label>
@@ -189,7 +224,7 @@ export default function Contact() {
                     )}
                 </motion.button>
             </form>
-        </div>
+        </motion.div>
       </div>
     </SectionWrapper>
   );

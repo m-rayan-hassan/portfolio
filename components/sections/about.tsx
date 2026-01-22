@@ -30,10 +30,18 @@ export default function About() {
                     { label: "Specialty", value: "Full Stack" },
                     { label: "Focus", value: "Full-Stack Development • System Design • AI-Integrated Applications" },
                 ].map((stat, idx) => (
-                    <div key={idx} className="bg-white/5 border border-white/10 p-4 rounded-xl text-center hover:bg-white/10 transition-colors">
+                    <motion.div 
+                        key={idx} 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.1 }}
+                        whileHover={{ y: -5, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
+                        className="bg-white/5 border border-white/10 p-4 rounded-xl text-center transition-colors"
+                    >
                         <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">{stat.label}</p>
                         <p className="text-sm md:text-base font-bold text-white break-words">{stat.value}</p>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
 
@@ -55,7 +63,13 @@ I enjoy building reliable systems that are simple, efficient, and designed to so
                 </p>
                 
                 {/* Education Section */}
-                <div className="mt-8">
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="mt-8"
+                >
                     <h5 className="text-xl font-bold text-white mb-4">Education</h5>
                     <div className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-colors">
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -73,7 +87,7 @@ I enjoy building reliable systems that are simple, efficient, and designed to so
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </div>
       </div>

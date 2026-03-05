@@ -108,7 +108,7 @@ export default function Contact() {
                   transition={{ delay: 0.3 }}
                   className="flex items-center gap-4"
                 >
-                    <div className="w-12 h-12 rounded-full bg-neon-purple/10 flex items-center justify-center text-neon-purple">
+                    <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400">
                         <MapPin className="w-5 h-5" />
                     </div>
                     <div>

@@ -6,7 +6,6 @@
   --space-blue-dark: #0a0a2e; /* Deep space blue */
   --space-blue-light: #1e3a8a; /* Lighter blue for gradients */
   --neon-cyan: #00f0ff; /* Glowing accents */
-  --neon-purple: #bc13fe; /* Secondary glow */
   --starlight: #ffffff; /* Text and stars */
   
   --background: var(--space-black);
@@ -24,7 +23,6 @@
   --color-space-blue-dark: var(--space-blue-dark);
   --color-space-blue-light: var(--space-blue-light);
   --color-neon-cyan: var(--neon-cyan);
-  --color-neon-purple: var(--neon-purple);
   --color-starlight: var(--starlight);
   --color-glass-bg: var(--glass-bg);
   --color-glass-border: var(--glass-border);
@@ -46,6 +44,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  overflow-y: scroll;
   min-height: 100vh;
 }
 

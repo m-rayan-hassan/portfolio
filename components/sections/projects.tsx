@@ -47,7 +47,7 @@ const projects: Project[] = [
     type: "Full Stack",
     featured: false,
     sourceLink: "https://github.com/m-rayan-hassan/feedbackvault",
-    liveLink: "https://thefeedbackvault.vercel.app/dashboard",
+    liveLink: "https://thefeedbackvault.vercel.app/",
     image: "/feedbackvault.png",
     videoLink: "https://www.linkedin.com/posts/muhammad-rayan-hassan-ab6a93327_nextjs-fullstack-typescript-activity-7370379989713723392-BROE?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFKQW2oBomFIES9qF1JBmP0gcbhTjVQWKhg"
   },
@@ -79,27 +79,19 @@ const projects: Project[] = [
     type: "Semester Project",
     sourceLink: "https://github.com/m-rayan-hassan/mini-Amazon-DSA-"
   },
-  {
-      title: "Portfolio Website",
-      date: "Frontend Project",
-      role: "Frontend Developer",
-      description: "Modern portfolio website with robust animations, SEO optimization, and responsive design. Built with the latest frontend technologies to showcase my work.",
-      tags: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
-      type: "Frontend",
-      sourceLink: "https://github.com/m-rayan-hassan/portfolio",
-      liveLink: "https://dev-rayan.vercel.app/",
-      image: "/portfolio.png" 
-  }
 ];
 
 const categories = ["All", "Full Stack", "Backend", "Frontend", "Semester Project"];
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [showAllProjects, setShowAllProjects] = useState(false);
 
   const filteredProjects = activeCategory === "All" 
     ? projects 
     : projects.filter(p => p.type.includes(activeCategory) || (activeCategory === "Backend" && p.tags.includes("Spring Boot")) || (activeCategory === "Frontend" && p.tags.includes("React")));
+
+  const displayedProjects = showAllProjects ? filteredProjects : filteredProjects.slice(0, 3);
 
   return (
     <SectionWrapper id="projects" className="py-24 overflow-hidden"> 
@@ -133,7 +125,7 @@ export default function Projects() {
         layout
         className="grid grid-cols-1 gap-8"
       >
-        {filteredProjects.map((project, idx) => (
+        {displayedProjects.map((project, idx) => (
           <motion.div 
             layout
             initial={{ opacity: 0, y: 30 }}
@@ -178,7 +170,7 @@ export default function Projects() {
                      </span>
                    )}
                    {project.type === "Semester Project" && (
-                     <span className="bg-neon-purple/20 text-neon-purple border border-neon-purple/30 text-xs font-bold px-2 py-0.5 rounded flex items-center gap-1">
+                     <span className="bg-blue-500/20 text-blue-400 border border-blue-500/30 text-xs font-bold px-2 py-0.5 rounded flex items-center gap-1">
                        🎓 Semester Project
                      </span>
                    )}
@@ -216,7 +208,7 @@ export default function Projects() {
                     </Link>
                   )}
                   {project.videoLink && (
-                    <Link href={project.videoLink} target="_blank" className="cursor-pointer flex items-center gap-2 px-4 py-2 rounded-lg bg-neon-purple/10 text-neon-purple border border-neon-purple/20 hover:bg-neon-purple/20 text-sm font-medium transition-colors">
+                    <Link href={project.videoLink} target="_blank" className="cursor-pointer flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 text-sm font-medium transition-colors">
                        <Play className="w-4 h-4 fill-current" /> View Video
                     </Link>
                   )}
@@ -225,6 +217,17 @@ export default function Projects() {
           </motion.div>
         ))}
       </motion.div>
+
+      {filteredProjects.length > 3 && (
+        <div className="flex justify-center mt-12">
+          <button
+            onClick={() => setShowAllProjects(!showAllProjects)}
+            className="px-8 py-3 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30 hover:bg-blue-500/20 font-medium transition-all transform hover:-translate-y-1"
+          >
+            {showAllProjects ? "Show Less" : "Show More"}
+          </button>
+        </div>
+      )}
     </SectionWrapper>
   );
 }

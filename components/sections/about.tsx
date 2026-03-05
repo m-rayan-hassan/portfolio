@@ -81,9 +81,9 @@ I enjoy building reliable systems that are simple, efficient, and designed to so
                             <div className="flex flex-col items-start md:items-end gap-2">
                                 <div className="bg-neon-cyan/10 border border-neon-cyan/30 px-4 py-2 rounded-lg">
                                     <p className="text-xs text-zinc-400 uppercase tracking-wider">CGPA</p>
-                                    <p className="text-2xl font-bold text-neon-cyan">3.62/4.0</p>
+                                    <p className="text-2xl font-bold text-neon-cyan">3.56/4.0</p>
                                 </div>
-                                <p className="text-sm text-zinc-500">2024 - 2028</p>
+                                <p className="text-sm text-zinc-500">Sep 2024 - Jun 2028</p>
                             </div>
                         </div>
                     </div>

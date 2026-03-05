@@ -69,7 +69,7 @@ export default function Hero() {
             <h2 className="text-3xl md:text-5xl font-bold text-white">
               Hello, I'm
             </h2>
-            <h1 className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-neon-cyan to-neon-purple pb-2">
+            <h1 className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-neon-cyan to-blue-500 pb-2">
               Muhammad Rayan Hassan
             </h1>
           </motion.div>

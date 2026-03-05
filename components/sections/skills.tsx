@@ -13,7 +13,7 @@ import {
   SiMysql, SiMongodb, SiPostgresql,
   SiVsco, SiPostman,
   SiVercel, SiCloudinary, 
-  SiOpenai, SiAnthropic, SiGoogle
+  SiOpenai, SiAnthropic, SiGoogle, SiExpress
 } from "react-icons/si";
 
 const skillCategories = [
@@ -47,6 +47,8 @@ const skillCategories = [
     border: "border-blue-500/20",
     bg: "bg-blue-500/10",
     skills: [
+      { name: "Node.js", icon: FaNodeJs },
+      { name: "Express.js", icon: SiExpress },
       { name: "MySQL", icon: SiMysql },
       { name: "MongoDB", icon: SiMongodb },
       { name: "PostgreSQL", icon: SiPostgresql },

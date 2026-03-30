@@ -148,7 +148,7 @@ export default function Navbar() {
               <Link
                 href="#contact"
                  onClick={() => setIsOpen(false)}
-                className="bg-orange-500 text-white px-5 py-3 rounded-xl font-bold text-center mt-4"
+                className="bg-neon-cyan/10 border border-neon-cyan/50 text-neon-cyan shadow-[0_0_10px_rgba(0,240,255,0.2)] px-5 py-3 rounded-xl font-bold text-center mt-4"
               >
                 Let's Talk
               </Link>

@@ -21,9 +21,9 @@ export default function HeroVectorAnimation() {
         {/* 1. SPEED LINES (Left) - Temed Cyan */}
         <div className="absolute top-10 -left-12 space-y-3 z-0 opacity-50">
             <motion.div animate={{ width: [60, 100, 60], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 3, repeat: Infinity }} className="h-1 bg-neon-cyan/20 rounded-full" />
-            <motion.div animate={{ width: [80, 40, 80], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 4, repeat: Infinity, delay: 1 }} className="h-1 bg-blue-500/20 rounded-full" />
+            <motion.div animate={{ width: [80, 40, 80], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 4, repeat: Infinity, delay: 1 }} className="h-1 bg-neon-cyan/20 rounded-full" />
             <motion.div animate={{ width: [50, 90, 50], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 3.5, repeat: Infinity, delay: 0.5 }} className="h-1 bg-neon-cyan/20 rounded-full" />
-            <motion.div animate={{ width: [70, 30, 70], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 4.5, repeat: Infinity, delay: 1.5 }} className="h-1 bg-blue-500/20 rounded-full" />
+            <motion.div animate={{ width: [70, 30, 70], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 4.5, repeat: Infinity, delay: 1.5 }} className="h-1 bg-neon-cyan/20 rounded-full" />
         </div>
 
         {/* 2. GEARS (Themed: Blue-ish Metallic) */}
@@ -51,7 +51,7 @@ export default function HeroVectorAnimation() {
             transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
             className="absolute bottom-10 -left-10 z-10"
         >
-             <Settings className="w-20 h-20 md:w-28 md:h-28 text-slate-400/80 drop-shadow-[0_0_15px_rgba(59,130,246,0.2)]" strokeWidth={1.5} />
+             <Settings className="w-20 h-20 md:w-28 md:h-28 text-slate-400/80 drop-shadow-[0_0_15px_rgba(0,240,255,0.2)]" strokeWidth={1.5} />
         </motion.div>
 
 
@@ -64,9 +64,9 @@ export default function HeroVectorAnimation() {
             <div className="flex-1 bg-gradient-to-br from-[#0f172a] to-[#1e1b4b] p-6 relative overflow-hidden">
                 {/* Code Lines */}
                 <div className="space-y-3 z-10 relative">
-                    <div className="w-1/3 h-2 bg-blue-500/80 rounded-full mb-4" />
+                    <div className="w-1/3 h-2 bg-neon-cyan/80 rounded-full mb-4" />
                     <motion.div animate={{ width: ["60%", "70%", "60%"] }} transition={{ duration: 3, repeat: Infinity }} className="h-2 bg-neon-cyan/60 rounded-full" />
-                    <div className="w-3/4 h-2 bg-blue-500/60 rounded-full" />
+                    <div className="w-3/4 h-2 bg-neon-cyan/60 rounded-full" />
                     <div className="w-1/2 h-2 bg-white/10 rounded-full" />
                     
                     <div className="mt-4 pt-4 border-t border-white/5 space-y-2">
@@ -96,11 +96,11 @@ export default function HeroVectorAnimation() {
         <motion.div 
             animate={{ y: [5, -5, 5] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            className="absolute -bottom-4 -right-2 md:bottom-0 md:right-0 w-16 h-32 md:w-24 md:h-48 bg-[#0a0f1e] border border-blue-500/30 rounded-2xl shadow-2xl z-30 flex flex-col items-center justify-center overflow-hidden"
+            className="absolute -bottom-4 -right-2 md:bottom-0 md:right-0 w-16 h-32 md:w-24 md:h-48 bg-[#0a0f1e] border border-neon-cyan/30 rounded-2xl shadow-2xl z-30 flex flex-col items-center justify-center overflow-hidden"
         >
-            <div className="w-full h-full bg-gradient-to-b from-slate-900/20 to-blue-900/20 flex items-center justify-center">
-                <div className="w-10 h-10 md:w-14 md:h-14 bg-blue-500/20 rounded-xl flex items-center justify-center border border-blue-500/40">
-                     <ShieldCheck className="w-6 h-6 md:w-8 md:h-8 text-blue-500" strokeWidth={2} />
+            <div className="w-full h-full bg-gradient-to-b from-slate-900/20 to-cyan-900/20 flex items-center justify-center">
+                <div className="w-10 h-10 md:w-14 md:h-14 bg-neon-cyan/20 rounded-xl flex items-center justify-center border border-neon-cyan/40">
+                     <ShieldCheck className="w-6 h-6 md:w-8 md:h-8 text-neon-cyan" strokeWidth={2} />
                 </div>
             </div>
         </motion.div>
@@ -110,7 +110,7 @@ export default function HeroVectorAnimation() {
         <motion.div 
             animate={{ y: [-5, 5, -5] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-            className="absolute top-0 right-0 md:-top-4 md:-right-4 w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-neon-cyan/10 to-blue-900/30 backdrop-blur-md border border-neon-cyan/30 rounded-2xl shadow-lg flex items-center justify-center z-30"
+            className="absolute top-0 right-0 md:-top-4 md:-right-4 w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-neon-cyan/10 to-cyan-900/30 backdrop-blur-md border border-neon-cyan/30 rounded-2xl shadow-lg flex items-center justify-center z-30"
         >
             <Cloud className="w-10 h-10 md:w-12 md:h-12 text-neon-cyan drop-shadow-[0_0_8px_rgba(0,240,255,0.5)]" />
             <motion.div 
@@ -127,10 +127,10 @@ export default function HeroVectorAnimation() {
         <motion.div
             animate={{ x: [0, 5, 0], opacity: [0.8, 1, 0.8] }}
             transition={{ duration: 4, repeat: Infinity }}
-            className="absolute top-20 -left-8 md:left-[-40px] bg-black/60 backdrop-blur-md px-3 py-2 rounded-lg border border-blue-500/30 shadow-lg z-30"
+            className="absolute top-20 -left-8 md:left-[-40px] bg-black/60 backdrop-blur-md px-3 py-2 rounded-lg border border-neon-cyan/30 shadow-lg z-30"
         >
             <div className="flex gap-2">
-                <div className="w-2 h-2 rounded-full bg-blue-500" />
+                <div className="w-2 h-2 rounded-full bg-neon-cyan" />
                 <div className="w-10 h-2 bg-white/20 rounded-full" />
             </div>
             <div className="mt-2 w-16 h-2 bg-white/10 rounded-full" />

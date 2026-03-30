@@ -108,7 +108,7 @@ export default function Contact() {
                   transition={{ delay: 0.3 }}
                   className="flex items-center gap-4"
                 >
-                    <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400">
+                    <div className="w-12 h-12 rounded-full bg-neon-cyan/10 flex items-center justify-center text-neon-cyan">
                         <MapPin className="w-5 h-5" />
                     </div>
                     <div>
@@ -207,7 +207,7 @@ export default function Contact() {
                     whileTap={{ scale: 0.98 }}
                     type="submit" 
                     disabled={isSubmitting}
-                    className={`cursor-pointer w-full bg-gradient-to-r from-neon-blue-light to-blue-600 hover:from-neon-blue hover:to-blue-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-900/20 hover:shadow-blue-900/40 transition-all flex items-center justify-center gap-2 ${
+                    className={`cursor-pointer w-full bg-gradient-to-r from-neon-cyan to-blue-600 hover:from-neon-cyan hover:to-blue-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-900/20 hover:shadow-blue-900/40 transition-all flex items-center justify-center gap-2 ${
                       isSubmitting ? "opacity-70 cursor-not-allowed" : ""
                     }`}
                 >

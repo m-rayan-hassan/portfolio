@@ -25,7 +25,19 @@ interface Project {
 
 const projects: Project[] = [
     // ... (Your projects data here) ...
-    {
+  {
+    title: "Cognivio AI - AI-Powered Learning Platform",
+    date: "Full-Stack SaaS Platform",
+    role: "Lead Developer",
+    description: "A comprehensive AI-powered learning platform that converts documents into interactive study experiences. Features include Voice Chat, Video overviews, Voice/Podcast overviews, AI summaries, flashcards, quizzes, and a subscription billing system via Paddle.",
+    tags: ["Next.js", "Express.js", "MongoDB", "Gemini API", "ElevenLabs", "Paddle"],
+    type: "Full Stack",
+    featured: true,
+    sourceLink: "https://github.com/m-rayan-hassan/CognivioAI",
+    liveLink: "https://cognivioai.app/",
+    image: "/cognivio.png",
+  },
+  {
     title: "UltimateFit - AI-Powered Fitness Web App",
     date: "Full-Stack Web App",
     role: "Lead Developer",
@@ -170,7 +182,7 @@ export default function Projects() {
                      </span>
                    )}
                    {project.type === "Semester Project" && (
-                     <span className="bg-blue-500/20 text-blue-400 border border-blue-500/30 text-xs font-bold px-2 py-0.5 rounded flex items-center gap-1">
+                     <span className="bg-neon-cyan/20 text-neon-cyan border border-neon-cyan/30 text-xs font-bold px-2 py-0.5 rounded flex items-center gap-1">
                        🎓 Semester Project
                      </span>
                    )}
@@ -208,7 +220,7 @@ export default function Projects() {
                     </Link>
                   )}
                   {project.videoLink && (
-                    <Link href={project.videoLink} target="_blank" className="cursor-pointer flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 text-sm font-medium transition-colors">
+                    <Link href={project.videoLink} target="_blank" className="cursor-pointer flex items-center gap-2 px-4 py-2 rounded-lg bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20 hover:bg-neon-cyan/20 text-sm font-medium transition-colors">
                        <Play className="w-4 h-4 fill-current" /> View Video
                     </Link>
                   )}
@@ -222,7 +234,7 @@ export default function Projects() {
         <div className="flex justify-center mt-12">
           <button
             onClick={() => setShowAllProjects(!showAllProjects)}
-            className="px-8 py-3 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30 hover:bg-blue-500/20 font-medium transition-all transform hover:-translate-y-1"
+            className="px-8 py-3 rounded-full bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30 hover:bg-neon-cyan/20 font-medium transition-all transform hover:-translate-y-1"
           >
             {showAllProjects ? "Show Less" : "Show More"}
           </button>

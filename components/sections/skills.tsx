@@ -19,9 +19,9 @@ import {
 const skillCategories = [
   {
     title: "Programming Languages",
-    color: "text-emerald-400",
-    border: "border-emerald-500/20",
-    bg: "bg-emerald-500/10",
+    color: "text-neon-cyan",
+    border: "border-neon-cyan/20",
+    bg: "bg-neon-cyan/10",
     skills: [
         { name: "JavaScript", icon: SiJavascript },
         { name: "TypeScript", icon: SiTypescript },
@@ -32,9 +32,9 @@ const skillCategories = [
   },
   {
     title: "Frontend Development",
-    color: "text-cyan-400",
-    border: "border-cyan-500/20",
-    bg: "bg-cyan-500/10",
+    color: "text-blue-400",
+    border: "border-blue-500/20",
+    bg: "bg-blue-500/10",
     skills: [
       { name: "React.js", icon: FaReact },
       { name: "Next.js", icon: SiNextdotjs },
@@ -43,9 +43,9 @@ const skillCategories = [
   },
   {
     title: "Backend & Databases",
-    color: "text-blue-400",
-    border: "border-blue-500/20",
-    bg: "bg-blue-500/10",
+    color: "text-sky-400",
+    border: "border-sky-500/20",
+    bg: "bg-sky-500/10",
     skills: [
       { name: "Node.js", icon: FaNodeJs },
       { name: "Express.js", icon: SiExpress },
@@ -56,9 +56,9 @@ const skillCategories = [
   },
   {
     title: "Development Tools",
-    color: "text-pink-400",
-    border: "border-pink-500/20",
-    bg: "bg-pink-500/10",
+    color: "text-neon-cyan",
+    border: "border-neon-cyan/20",
+    bg: "bg-neon-cyan/10",
     skills: [
       { name: "Visual Studio Code", icon: SiVsco },
       { name: "Git", icon: FaGitAlt },
@@ -72,15 +72,16 @@ const skillCategories = [
     bg: "bg-indigo-500/10",
     skills: [
         { name: "Vercel", icon: SiVercel },
+        { name: "Docker", icon: FaDocker },
         { name: "GitHub", icon: FaGithub },
         { name: "Cloudinary", icon: SiCloudinary },
     ]
   },
   {
       title: "AI & Automation",
-      color: "text-violet-400",
-      border: "border-violet-500/20",
-      bg: "bg-violet-500/10",
+      color: "text-blue-500",
+      border: "border-blue-600/20",
+      bg: "bg-blue-600/10",
       skills: [
           { name: "OpenAI", icon: SiOpenai },
           { name: "Gemini", icon: SiGoogle },

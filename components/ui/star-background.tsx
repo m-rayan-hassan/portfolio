@@ -13,15 +13,26 @@ export default function StarBackground({ className }: StarBackgroundProps) {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
+    let oldWidth = window.innerWidth;
+    
     const handleResize = () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+      // On mobile, scrolling hides/shows the URL bar causing height changes and a resize event.
+      // Ignoring height-only resizes on mobile prevents the background from jittering.
+      if (window.innerWidth !== oldWidth || window.innerWidth > 768) {
+        setDimensions({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+        oldWidth = window.innerWidth;
+      }
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize();
+    
+    setDimensions({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);

@@ -29,20 +29,20 @@ const projects: Project[] = [
     title: "Cognivio AI - AI-Powered Learning Platform",
     date: "Full-Stack SaaS Platform",
     role: "Lead Developer",
-    description: "A comprehensive AI-powered learning platform that converts documents into interactive study experiences. Features include Voice Chat, Video overviews, Voice/Podcast overviews, AI summaries, flashcards, quizzes, and a subscription billing system via Paddle.",
-    tags: ["Next.js", "Express.js", "MongoDB", "Gemini API", "ElevenLabs", "Paddle"],
+    description: "Transforms uploaded documents into 7+ AI learning modes including video overviews, podcast overviews, voice chat (with viva mode), document chat, quizzes, flashcards, and summaries powered by Gemini and ElevenLabs. Implemented RAG pipeline using LangChain and MongoDB Atlas Vector Search with Gemini embeddings. Engineered full SaaS infrastructure: Paddle subscription billing, Google OAuth, JWT-secured REST APIs, Cloudinary media storage, and live users on a custom domain.",
+    tags: ["Next.js", "Node.js", "Express", "MongoDB Atlas", "LangChain", "Gemini API", "ElevenLabs", "Vapi", "Paddle", "Cloudinary"],
     type: "Full Stack",
     featured: true,
     sourceLink: "https://github.com/m-rayan-hassan/CognivioAI",
-    liveLink: "https://cognivioai.app/",
+    liveLink: "https://cognivioai.vercel.app/",
     image: "/cognivio.png",
   },
   {
     title: "UltimateFit - AI-Powered Fitness Web App",
     date: "Full-Stack Web App",
     role: "Lead Developer",
-    description: "A modern full-stack fitness platform delivering personalized workout routines and diet plans through an intelligent AI voice coach. Designed with a strong focus on UX, performance, and scalability.",
-    tags: ["Next.js", "React", "Tailwind CSS", "MongoDB", "AI APIs"],
+    description: "Built an AI fitness coach with a Vapi voice agent that conducts a real-time interview on user goals, then generates a personalized workout and nutrition plan using OpenAI with curated YouTube tutorials per exercise. Implemented Clerk authentication, MongoDB persistence, and TypeScript end-to-end; deployed on Vercel.",
+    tags: ["Next.js", "TypeScript", "MongoDB", "OpenAI", "Gemini", "Vapi", "Clerk", "Tailwind CSS"],
     type: "Full Stack",
     featured: true,
     sourceLink: "https://github.com/m-rayan-hassan/ultimatefit",
@@ -76,8 +76,8 @@ const projects: Project[] = [
     title: "Smart Inventory & Sales System with Dynamic Price Optimization",
     date: "Semester Project",
     role: "Java Developer",
-    description: "Comprehensive inventory and sales management system developed in Java. Manages products, stock levels, and sales while applying dynamic price optimization using rule-based logic.",
-    tags: ["Java", "SQL", "Swing", "JDBC"],
+    description: "Built a desktop business management app with Java Swing and SQL Server for product, customer, and sales tracking with complete billing history. Implemented a rule-based dynamic pricing engine that auto-adjusts prices based on real-time stock levels and demand.",
+    tags: ["Java", "Java Swing", "Microsoft SQL Server", "JDBC", "OOP"],
     type: "Semester Project",
     sourceLink: "https://github.com/m-rayan-hassan/SmartInventoryAndSalesSystem",
     image: "/smartInventory.png",
@@ -109,16 +109,26 @@ export default function Projects() {
     <SectionWrapper id="projects" className="py-24 overflow-hidden"> 
       {/* Added overflow-hidden to wrapper to prevent scrollbar flickering */}
       
-      <div className="text-center mb-16 space-y-4">
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-16 space-y-4"
+      >
         <h2 className="text-4xl md:text-5xl font-bold text-white">
           Featured <span className="text-neon-cyan">Projects</span>
         </h2>
         <p className="text-zinc-400">A collection of projects showcasing my skills in full-stack development</p>
         
         <div className="flex flex-wrap justify-center gap-2 pt-4">
-          {categories.map((cat) => (
-            <button
+          {categories.map((cat, idx) => (
+            <motion.button
               key={cat}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, type: "spring", stiffness: 200 }}
               onClick={() => setActiveCategory(cat)}
               className={cn(
                 "px-4 py-1.5 rounded-full text-sm font-medium transition-all border",
@@ -128,10 +138,10 @@ export default function Projects() {
               )}
             >
               {cat}
-            </button>
+            </motion.button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       <motion.div 
         layout
@@ -140,10 +150,10 @@ export default function Projects() {
         {displayedProjects.map((project, idx) => (
           <motion.div 
             layout
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: idx * 0.1 }}
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: idx * 0.1, type: "spring", stiffness: 100 }}
             key={`${project.title}-${idx}`}
             className="group relative bg-zinc-900/50 border border-white/5 rounded-2xl p-6 md:p-8 hover:border-neon-cyan/30 transition-all hover:bg-zinc-900/80 hover:scale-[1.01] flex flex-col md:flex-row gap-8"
           >
@@ -231,14 +241,19 @@ export default function Projects() {
       </motion.div>
 
       {filteredProjects.length > 3 && (
-        <div className="flex justify-center mt-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex justify-center mt-12"
+        >
           <button
             onClick={() => setShowAllProjects(!showAllProjects)}
             className="px-8 py-3 rounded-full bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30 hover:bg-neon-cyan/20 font-medium transition-all transform hover:-translate-y-1"
           >
             {showAllProjects ? "Show Less" : "Show More"}
           </button>
-        </div>
+        </motion.div>
       )}
     </SectionWrapper>
   );

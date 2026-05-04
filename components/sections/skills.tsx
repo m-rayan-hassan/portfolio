@@ -2,10 +2,9 @@
 
 import SectionWrapper from "@/components/ui/section-wrapper";
 import { motion } from "framer-motion";
-import { Cpu } from "lucide-react";
-import { Rocket, Sparkles } from "lucide-react";
+import { Cpu, BrainCircuit, Mic, FileSearch, AudioWaveform, Headset, DatabaseZap, Code2 } from "lucide-react";
 import { 
-  FaJava, FaReact, FaDocker, FaGithub, FaGitAlt, FaNodeJs 
+  FaJava, FaReact, FaDocker, FaGithub, FaGitAlt, FaNodeJs, FaHtml5, FaCss3Alt, FaDatabase, FaLinux 
 } from "react-icons/fa";
 import { 
   SiJavascript, SiTypescript, SiCplusplus, SiPython,
@@ -13,81 +12,94 @@ import {
   SiMysql, SiMongodb, SiPostgresql,
   SiVsco, SiPostman,
   SiVercel, SiCloudinary, 
-  SiOpenai, SiAnthropic, SiGoogle, SiExpress
+  SiOpenai, SiGoogle, SiExpress
 } from "react-icons/si";
 
 const skillCategories = [
   {
     title: "Programming Languages",
-    color: "text-neon-cyan",
-    border: "border-neon-cyan/20",
-    bg: "bg-neon-cyan/10",
+    iconColor: "text-neon-cyan",
+    hoverIconColor: "group-hover:text-white",
+    hoverBg: "hover:bg-neon-cyan/10",
+    hoverBorder: "hover:border-neon-cyan/50",
     skills: [
         { name: "JavaScript", icon: SiJavascript },
         { name: "TypeScript", icon: SiTypescript },
-        { name: "C++", icon: SiCplusplus },
-        { name: "Java", icon: FaJava },
         { name: "Python", icon: SiPython },
+        { name: "Java", icon: FaJava },
+        { name: "C++", icon: SiCplusplus },
     ]
   },
   {
     title: "Frontend Development",
-    color: "text-blue-400",
-    border: "border-blue-500/20",
-    bg: "bg-blue-500/10",
+    iconColor: "text-blue-400",
+    hoverIconColor: "group-hover:text-white",
+    hoverBg: "hover:bg-blue-400/10",
+    hoverBorder: "hover:border-blue-400/50",
     skills: [
       { name: "React.js", icon: FaReact },
       { name: "Next.js", icon: SiNextdotjs },
       { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "HTML5", icon: FaHtml5 },
+      { name: "CSS3", icon: FaCss3Alt },
     ]
   },
   {
     title: "Backend & Databases",
-    color: "text-sky-400",
-    border: "border-sky-500/20",
-    bg: "bg-sky-500/10",
+    iconColor: "text-sky-400",
+    hoverIconColor: "group-hover:text-white",
+    hoverBg: "hover:bg-sky-400/10",
+    hoverBorder: "hover:border-sky-400/50",
     skills: [
       { name: "Node.js", icon: FaNodeJs },
       { name: "Express.js", icon: SiExpress },
-      { name: "MySQL", icon: SiMysql },
-      { name: "MongoDB", icon: SiMongodb },
       { name: "PostgreSQL", icon: SiPostgresql },
+      { name: "MongoDB", icon: SiMongodb },
+      { name: "MySQL", icon: SiMysql },
+      { name: "SQL", icon: FaDatabase },
     ]
   },
   {
-    title: "Development Tools",
-    color: "text-neon-cyan",
-    border: "border-neon-cyan/20",
-    bg: "bg-neon-cyan/10",
+    title: "AI & Engineering",
+    iconColor: "text-neon-cyan",
+    hoverIconColor: "group-hover:text-white",
+    hoverBg: "hover:bg-neon-cyan/10",
+    hoverBorder: "hover:border-neon-cyan/50",
     skills: [
-      { name: "Visual Studio Code", icon: SiVsco },
-      { name: "Git", icon: FaGitAlt },
-      { name: "Postman", icon: SiPostman },
+        { name: "OpenAI API", icon: SiOpenai },
+        { name: "Gemini API", icon: SiGoogle },
+        { name: "LangChain", icon: BrainCircuit },
+        { name: "RAG Pipeline", icon: FileSearch },
+        { name: "Vector Search", icon: DatabaseZap },
     ]
   },
   {
-    title: "Cloud & Deployment",
-    color: "text-indigo-400",
-    border: "border-indigo-500/20",
-    bg: "bg-indigo-500/10",
+    title: "Voice & Media APIs",
+    iconColor: "text-blue-400",
+    hoverIconColor: "group-hover:text-white",
+    hoverBg: "hover:bg-blue-400/10",
+    hoverBorder: "hover:border-blue-400/50",
     skills: [
-        { name: "Vercel", icon: SiVercel },
-        { name: "Docker", icon: FaDocker },
-        { name: "GitHub", icon: FaGithub },
+        { name: "ElevenLabs", icon: AudioWaveform },
+        { name: "Vapi", icon: Headset },
         { name: "Cloudinary", icon: SiCloudinary },
     ]
   },
   {
-      title: "AI & Automation",
-      color: "text-blue-500",
-      border: "border-blue-600/20",
-      bg: "bg-blue-600/10",
-      skills: [
-          { name: "OpenAI", icon: SiOpenai },
-          { name: "Gemini", icon: SiGoogle },
-          { name: "Claude", icon: SiAnthropic },
-          { name: "Antigravity", icon: Rocket },
-      ]
+    title: "DevOps & Tools",
+    iconColor: "text-sky-400",
+    hoverIconColor: "group-hover:text-white",
+    hoverBg: "hover:bg-sky-400/10",
+    hoverBorder: "hover:border-sky-400/50",
+    skills: [
+        { name: "Docker", icon: FaDocker },
+        { name: "Linux", icon: FaLinux },
+        { name: "Vercel", icon: SiVercel },
+        { name: "Git", icon: FaGitAlt },
+        { name: "GitHub", icon: FaGithub },
+        { name: "VS Code", icon: SiVsco },
+        { name: "Postman", icon: SiPostman },
+    ]
   }
 ];
 
@@ -116,9 +128,9 @@ export default function Skills() {
             whileHover={{ y: -5 }}
             transition={{ duration: 0.3, delay: idx * 0.1 }}
             key={idx}
-            className={`p-6 rounded-2xl bg-zinc-900/50 border ${category.border} hover:bg-zinc-900/80 transition-colors group`}
+            className={`p-6 rounded-2xl bg-zinc-900/50 border border-white/5 ${category.hoverBorder} hover:bg-zinc-900/80 transition-all shadow-sm`}
           >
-            <h3 className={`text-lg font-bold mb-6 ${category.color} border-b border-white/5 pb-2`}>{category.title}</h3>
+            <h3 className="text-lg font-bold mb-6 text-zinc-100 border-b border-white/5 pb-2">{category.title}</h3>
 
             <div className="grid grid-cols-2 gap-4">
               {category.skills.map((skill, sIdx) => (
@@ -128,10 +140,10 @@ export default function Skills() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: (idx * 0.1) + (sIdx * 0.05) }}
-                  className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors"
+                  className={`flex items-center gap-3 p-2 rounded-lg ${category.hoverBg} transition-colors group`}
                 >
-                  <skill.icon className={`w-6 h-6 ${category.color}`} />
-                  <span className="text-zinc-300 font-medium text-sm">
+                  <skill.icon className={`w-5 h-5 ${category.iconColor} ${category.hoverIconColor} transition-colors`} />
+                  <span className="text-zinc-300 font-medium text-sm group-hover:text-white transition-colors">
                      {skill.name}
                   </span>
                 </motion.div>

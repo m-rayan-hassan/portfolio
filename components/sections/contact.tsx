@@ -113,7 +113,7 @@ export default function Contact() {
                     </div>
                     <div>
                         <p className="text-sm text-zinc-500">Location</p>
-                        <p className="text-white font-medium">Remote / Worldwide</p>
+                        <p className="text-white font-medium">Islamabad, Pakistan / Remote</p>
                     </div>
                 </motion.div>
             </div>

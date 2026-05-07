@@ -29,8 +29,8 @@ const projects: Project[] = [
     title: "Cognivio AI - AI-Powered Learning Platform",
     date: "Full-Stack SaaS Platform",
     role: "Lead Developer",
-    description: "Transforms uploaded documents into 7+ AI learning modes including video overviews, podcast overviews, voice chat (with viva mode), document chat, quizzes, flashcards, and summaries powered by Gemini and ElevenLabs. Implemented RAG pipeline using LangChain and MongoDB Atlas Vector Search with Gemini embeddings. Engineered full SaaS infrastructure: Paddle subscription billing, Google OAuth, JWT-secured REST APIs, Cloudinary media storage, and live users on a custom domain.",
-    tags: ["Next.js", "Node.js", "Express", "MongoDB Atlas", "LangChain", "Gemini API", "ElevenLabs", "Vapi", "Paddle", "Cloudinary"],
+    description: "Transforms uploaded documents into 7+ AI learning modes including video overviews, podcast overviews, voice chat (with viva mode), document chat, quizzes, flashcards, and summaries powered by Gemini and ElevenLabs. Implemented RAG pipeline using LangChain and MongoDB Atlas Vector Search with Gemini embeddings. Engineered full SaaS infrastructure: Lemon Squeezy subscription billing, Google OAuth, JWT-secured REST APIs, Cloudinary media storage, and live users on a custom domain.",
+    tags: ["Next.js", "Node.js", "Express", "MongoDB Atlas", "LangChain", "Gemini API", "ElevenLabs", "Vapi", "Lemon Squeezy", "Cloudinary", "TypeScript", "Tailwind CSS", "Clerk", "JWT", "REST API", "Google OAuth", "Vector Search", "RAG"],
     type: "Full Stack",
     featured: true,
     sourceLink: "https://github.com/m-rayan-hassan/CognivioAI",
@@ -208,14 +208,11 @@ export default function Projects() {
                </p>
 
                <div className="flex flex-wrap gap-2 pt-2">
-                  {project.tags.slice(0, 6).map(tag => (
+                   {project.tags.map(tag => (
                     <span key={tag} className="text-xs px-2 py-1 rounded bg-zinc-800 text-zinc-300 border border-white/5">
                       {tag}
                     </span>
                   ))}
-                  {project.tags.length > 6 && (
-                    <span className="text-xs px-2 py-1 text-zinc-500">+{project.tags.length - 6} more</span>
-                  )}
                </div>
 
                <div className="flex items-center gap-4 pt-4">

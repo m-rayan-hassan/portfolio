@@ -5,8 +5,9 @@ import StarBackground from "@/components/ui/star-background";
 
 const ubuntu = Ubuntu({
   weight: ["300", "400", "500", "700"],
-  variable: "--font-ubuntu",
+  variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -30,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ubuntu.variable} ${geistMono.variable} antialiased`}
+        className={`${ubuntu.variable} ${geistMono.variable} font-sans antialiased`}
       >
         <StarBackground />
         {children}

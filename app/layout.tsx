@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
-import { DM_Sans, Fira_Code } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import StarBackground from "@/components/ui/star-background";
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "700"],
 });
 
-const firaCode = Fira_Code({
-  variable: "--font-fira-code",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -31,8 +27,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${firaCode.variable}`}>
-      <body className="font-sans antialiased">
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <StarBackground />
         {children}
       </body>

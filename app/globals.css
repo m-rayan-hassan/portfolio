@@ -52,6 +52,12 @@ body {
   overflow-y: scroll;
   min-height: 100vh;
   overscroll-behavior-y: none;
+  
+  /* Font rendering optimizations for cross-device consistency */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 /* Custom Scrollbar */

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Fira_Code } from "next/font/google";
+import { DM_Sans, Fira_Code } from "next/font/google";
 import "./globals.css";
 import StarBackground from "@/components/ui/star-background";
 
-const inter = Inter({
-  variable: "--font-inter",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
 });
 
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${firaCode.variable}`}>
+    <html lang="en" className={`${dmSans.variable} ${firaCode.variable}`}>
       <body className="font-sans antialiased">
         <StarBackground />
         {children}

@@ -28,6 +28,9 @@
   --color-glass-border: var(--glass-border);
   
   --font-mono: var(--font-geist-mono);
+  
+  --font-weight-semibold: 500;
+  --font-weight-bold: 500;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -76,4 +79,9 @@ body {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
+}
+
+/* Reduce bold intensity globally */
+b, strong {
+  font-weight: 500;
 }

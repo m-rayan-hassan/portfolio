@@ -50,11 +50,11 @@ export default function Hero() {
               I am a
               <TypeAnimation
                 sequence={[
-                  'Software Developer',
+                  'Full Stack AI Engineer',
                   2000,
                   'Computer Science Student',
                   2000,
-                  'Full Stack Developer',
+                  'Applied AI Systems Builder',
                   2000
                 ]}
                 wrapper="span"
@@ -75,7 +75,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.p variants={itemVariants} className="text-lg text-zinc-400 leading-relaxed max-w-xl">
-            I build modern full-stack web applications with a focus on scalability, performance, and solving real-world problems, enhanced with smart AI integrations.
+             Full Stack AI Engineer and CS student. I build scalable applications by integrating clean system architecture with auditable AI reasoning, creating production-ready tools that people can trust.
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-4">

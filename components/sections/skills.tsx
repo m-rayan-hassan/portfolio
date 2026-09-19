@@ -2,17 +2,17 @@
 
 import SectionWrapper from "@/components/ui/section-wrapper";
 import { motion } from "framer-motion";
-import { Cpu, BrainCircuit, Mic, FileSearch, AudioWaveform, Headset, DatabaseZap, Code2 } from "lucide-react";
+import { Cpu, BrainCircuit, Mic, FileSearch, AudioWaveform, Headset, DatabaseZap, Code2, Server, Cloud, Database, Shield, Workflow, Lock, Zap } from "lucide-react";
 import { 
   FaJava, FaReact, FaDocker, FaGithub, FaGitAlt, FaNodeJs, FaHtml5, FaCss3Alt, FaDatabase, FaLinux 
 } from "react-icons/fa";
 import { 
   SiJavascript, SiTypescript, SiCplusplus, SiPython,
-  SiNextdotjs, SiTailwindcss,
-  SiMysql, SiMongodb, SiPostgresql,
-  SiVsco, SiPostman,
-  SiVercel, SiCloudinary, 
-  SiOpenai, SiGoogle, SiExpress
+  SiNextdotjs, SiTailwindcss, SiFramer,
+  SiMysql, SiMongodb, SiPostgresql, SiRedis,
+  SiVsco, SiPostman, SiAmazonwebservices,
+  SiVercel, SiCloudinary, SiStripe,
+  SiOpenai, SiGoogle, SiExpress, SiFastapi
 } from "react-icons/si";
 
 const skillCategories = [
@@ -28,6 +28,7 @@ const skillCategories = [
         { name: "Python", icon: SiPython },
         { name: "Java", icon: FaJava },
         { name: "C++", icon: SiCplusplus },
+        { name: "SQL", icon: FaDatabase },
     ]
   },
   {
@@ -40,12 +41,12 @@ const skillCategories = [
       { name: "React.js", icon: FaReact },
       { name: "Next.js", icon: SiNextdotjs },
       { name: "Tailwind CSS", icon: SiTailwindcss },
-      { name: "HTML5", icon: FaHtml5 },
-      { name: "CSS3", icon: FaCss3Alt },
+      { name: "Framer Motion", icon: SiFramer },
+      { name: "Remotion", icon: Code2 },
     ]
   },
   {
-    title: "Backend & Databases",
+    title: "Backend",
     iconColor: "text-sky-400",
     hoverIconColor: "group-hover:text-white",
     hoverBg: "hover:bg-sky-400/10",
@@ -53,52 +54,56 @@ const skillCategories = [
     skills: [
       { name: "Node.js", icon: FaNodeJs },
       { name: "Express.js", icon: SiExpress },
-      { name: "PostgreSQL", icon: SiPostgresql },
-      { name: "MongoDB", icon: SiMongodb },
-      { name: "MySQL", icon: SiMysql },
-      { name: "SQL", icon: FaDatabase },
+      { name: "FastAPI", icon: SiFastapi },
+      { name: "REST APIs", icon: Server },
+      { name: "Redis", icon: SiRedis },
+      { name: "BullMQ", icon: Zap },
+      { name: "Clerk", icon: Lock },
+      { name: "NextAuth.js", icon: Shield },
     ]
   },
   {
-    title: "AI & Engineering",
+    title: "Databases & ORMs",
+    iconColor: "text-blue-500",
+    hoverIconColor: "group-hover:text-white",
+    hoverBg: "hover:bg-blue-500/10",
+    hoverBorder: "hover:border-blue-500/50",
+    skills: [
+      { name: "PostgreSQL", icon: SiPostgresql },
+      { name: "MongoDB", icon: SiMongodb },
+      { name: "MySQL", icon: SiMysql },
+      { name: "NeonDB", icon: Database },
+      { name: "Prisma", icon: DatabaseZap },
+      { name: "Drizzle", icon: DatabaseZap },
+    ]
+  },
+  {
+    title: "AI / LLM & ML",
     iconColor: "text-neon-cyan",
     hoverIconColor: "group-hover:text-white",
     hoverBg: "hover:bg-neon-cyan/10",
     hoverBorder: "hover:border-neon-cyan/50",
     skills: [
-        { name: "OpenAI API", icon: SiOpenai },
-        { name: "Gemini API", icon: SiGoogle },
-        { name: "LangChain", icon: BrainCircuit },
-        { name: "RAG Pipeline", icon: FileSearch },
-        { name: "Vector Search", icon: DatabaseZap },
+        { name: "OpenAI & Gemini", icon: BrainCircuit },
+        { name: "LangChain", icon: Workflow },
+        { name: "RAG & Vector Search", icon: FileSearch },
+        { name: "XGBoost", icon: Cpu },
+        { name: "scikit-learn", icon: Code2 },
     ]
   },
   {
-    title: "Voice & Media APIs",
-    iconColor: "text-blue-400",
-    hoverIconColor: "group-hover:text-white",
-    hoverBg: "hover:bg-blue-400/10",
-    hoverBorder: "hover:border-blue-400/50",
-    skills: [
-        { name: "ElevenLabs", icon: AudioWaveform },
-        { name: "Vapi", icon: Headset },
-        { name: "Cloudinary", icon: SiCloudinary },
-    ]
-  },
-  {
-    title: "DevOps & Tools",
+    title: "DevOps, Tools & APIs",
     iconColor: "text-sky-400",
     hoverIconColor: "group-hover:text-white",
     hoverBg: "hover:bg-sky-400/10",
     hoverBorder: "hover:border-sky-400/50",
     skills: [
         { name: "Docker", icon: FaDocker },
-        { name: "Linux", icon: FaLinux },
+        { name: "AWS", icon: SiAmazonwebservices },
         { name: "Vercel", icon: SiVercel },
-        { name: "Git", icon: FaGitAlt },
-        { name: "GitHub", icon: FaGithub },
-        { name: "VS Code", icon: SiVsco },
-        { name: "Postman", icon: SiPostman },
+        { name: "n8n", icon: Workflow },
+        { name: "Stripe", icon: SiStripe },
+        { name: "Git & Linux", icon: FaLinux },
     ]
   }
 ];

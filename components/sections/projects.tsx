@@ -24,73 +24,74 @@ interface Project {
 }
 
 const projects: Project[] = [
-    // ... (Your projects data here) ...
+  {
+    title: "AI Clinical Intelligence Platform",
+    date: "Governed Clinical Decision Support System",
+    role: "Full Stack AI Engineer",
+    description: "Splits the system into a Node.js/Express service (auth, RBAC, PostgreSQL/Drizzle, governance state machine) and an internal-only FastAPI service running an XGBoost model and a RAG/LangChain pipeline. Requires practitioner review and a CMO/Admin approval gate before any AI-generated recommendation reaches a patient record.",
+    tags: ["Next.js", "Node.js/Express", "FastAPI", "PostgreSQL/Drizzle", "LangChain", "XGBoost", "Pinecone"],
+    type: "Full Stack",
+    featured: true,
+    sourceLink: "https://github.com/m-rayan-hassan/Clinical-Intelligence-Platform",
+    image: "#"
+  },
   {
     title: "Cognivio AI - AI-Powered Learning Platform",
     date: "Full-Stack SaaS Platform",
-    role: "Lead Developer",
-    description: "Transforms uploaded documents into 7+ AI learning modes including video overviews, podcast overviews, voice chat (with viva mode), document chat, quizzes, flashcards, and summaries powered by Gemini and ElevenLabs. Implemented RAG pipeline using LangChain and MongoDB Atlas Vector Search with Gemini embeddings. Engineered full SaaS infrastructure: Lemon Squeezy subscription billing, Google OAuth, JWT-secured REST APIs, Cloudinary media storage, and live users on a custom domain.",
-    tags: ["Next.js", "Node.js", "Express", "MongoDB Atlas", "LangChain", "Gemini API", "ElevenLabs", "Vapi", "Lemon Squeezy", "Cloudinary", "TypeScript", "Tailwind CSS", "Clerk", "JWT", "REST API", "Google OAuth", "Vector Search", "RAG"],
+    role: "Team Lead, AI Engineering",
+    description: "Converts static documents into 7+ interactive AI learning modes: Remotion-rendered video overviews, Vapi/ElevenLabs voice discussion and oral-exam-style Viva sessions, quizzes, and flashcards. Parses text-and-diagram-heavy PDFs with LlamaParse before chunking and embedding into MongoDB Atlas Vector Search.",
+    tags: ["Next.js", "Node.js/Express", "MongoDB Atlas", "LangChain", "Gemini API", "Vapi", "ElevenLabs", "Remotion", "Stripe", "LemonSqueezy"],
     type: "Full Stack",
     featured: true,
     sourceLink: "https://github.com/m-rayan-hassan/CognivioAI",
-    liveLink: "https://cognivioai.vercel.app/",
+    liveLink: "https://cognivioai.app/",
     image: "/cognivio.png",
   },
   {
     title: "UltimateFit - AI-Powered Fitness Web App",
     date: "Full-Stack Web App",
     role: "Lead Developer",
-    description: "Built an AI fitness coach with a Vapi voice agent that conducts a real-time interview on user goals, then generates a personalized workout and nutrition plan using OpenAI with curated YouTube tutorials per exercise. Implemented Clerk authentication, MongoDB persistence, and TypeScript end-to-end; deployed on Vercel.",
-    tags: ["Next.js", "TypeScript", "MongoDB", "OpenAI", "Gemini", "Vapi", "Clerk", "Tailwind CSS"],
+    description: "Replaces static intake forms with a Vapi voice agent that interviews users and auto-generates a personalized workout and nutrition plan with curated video tutorials. Runs as a fully typed, end-to-end TypeScript app with Clerk auth and MongoDB persistence.",
+    tags: ["Next.js", "TypeScript", "MongoDB", "OpenAI", "Vapi", "Clerk"],
     type: "Full Stack",
     featured: true,
     sourceLink: "https://github.com/m-rayan-hassan/ultimatefit",
     liveLink: "https://ultimatefit.vercel.app/",
     image: "/ultimatefit.png", 
-    videoLink: "https://www.linkedin.com/posts/muhammad-rayan-hassan-ab6a93327_ai-nextjs-openai-activity-7382766828151914496-x7Yb?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFKQW2oBomFIES9qF1JBmP0gcbhTjVQWKhg"
+    videoLink: "https://www.linkedin.com/posts/muhammad-rayan-hassan-ab6a93327_ai-nextjs-openai-activity-7382766828151914496-x7Yb"
   },
   {
     title: "FeedbackVault - Anonymous Feedback System",
     date: "Anonymous Messaging",
     role: "Fullstack Developer",
-    description: "Secure, anonymous messaging platform allowing users to receive honest feedback. Integrates Gemini API for AI-powered constructive response suggestions while maintaining complete anonymity.",
-    tags: ["Next.js", "React", "MongoDB", "Gemini API"],
+    description: "Lets users send and receive fully anonymous feedback via a shareable profile link. Generates thoughtful message suggestions with the Gemini API. Secures accounts with NextAuth credential-based auth, Zod-validated forms, and Resend email verification.",
+    tags: ["Next.js", "TypeScript", "MongoDB", "NextAuth.js", "Gemini API", "Resend"],
     type: "Full Stack",
     featured: false,
     sourceLink: "https://github.com/m-rayan-hassan/feedbackvault",
     liveLink: "https://thefeedbackvault.vercel.app/",
     image: "/feedbackvault.png",
-    videoLink: "https://www.linkedin.com/posts/muhammad-rayan-hassan-ab6a93327_nextjs-fullstack-typescript-activity-7370379989713723392-BROE?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFKQW2oBomFIES9qF1JBmP0gcbhTjVQWKhg"
+    videoLink: "https://www.linkedin.com/posts/muhammad-rayan-hassan-ab6a93327_nextjs-fullstack-typescript-activity-7370379989713723392-BROE"
   },
   {
-    title: "LMS with Payment Gateway",
-    date: "Backend System",
-    role: "Backend Developer",
-    description: "Backend-driven Learning Management System handling course management, user auth, and secure Stripe payments. Demonstrates scalable API design and secure transaction handling.",
-    tags: ["Node.js", "Express", "MongoDB", "Stripe API"],
-    type: "Backend",
-    sourceLink: "https://github.com/m-rayan-hassan/LMS-PaymentGateway",
+    title: "Productivity Leak Detector",
+    date: "Hackathon Project",
+    role: "Finalist, IEEE Hackathon",
+    description: "An AI web app that analyzes daily routine logs to identify time inefficiencies and generate actionable fixes, delivering a working MVP in 6 hours. Integrated Clerk authentication, OpenAI API, and MongoDB.",
+    tags: ["Next.js", "Clerk", "OpenAI", "MongoDB"],
+    type: "Full Stack",
+    sourceLink: "#",
   },
   {
-    title: "Smart Inventory & Sales System with Dynamic Price Optimization",
+    title: "Smart Inventory & Sales System",
     date: "Semester Project",
     role: "Java Developer",
-    description: "Built a desktop business management app with Java Swing and SQL Server for product, customer, and sales tracking with complete billing history. Implemented a rule-based dynamic pricing engine that auto-adjusts prices based on real-time stock levels and demand.",
-    tags: ["Java", "Java Swing", "Microsoft SQL Server", "JDBC", "OOP"],
+    description: "Built a desktop business management app with Java Swing and SQL Server. Implemented a rule-based dynamic pricing engine that auto-adjusts prices based on real-time stock levels and demand.",
+    tags: ["Java", "Java Swing", "SQL Server", "OOP"],
     type: "Semester Project",
     sourceLink: "https://github.com/m-rayan-hassan/SmartInventoryAndSalesSystem",
     image: "/smartInventory.png",
-  },
-  {
-    title: "Mini-Amazon – Smart Marketplace System",
-    date: "Academic Project",
-    role: "C++ Developer",
-    description: "Smart marketplace simulation implementing core e-commerce features like product listings, searching, and ordering. Built to demonstrate efficient data handling with custom data structures.",
-    tags: ["C++", "DSA", "Heaps", "HashMaps", "BST"],
-    type: "Semester Project",
-    sourceLink: "https://github.com/m-rayan-hassan/mini-Amazon-DSA-"
-  },
+  }
 ];
 
 const categories = ["All", "Full Stack", "Backend", "Frontend", "Semester Project"];

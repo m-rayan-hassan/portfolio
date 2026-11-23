@@ -1,25 +1,35 @@
 import type { Metadata } from "next";
-import { Ubuntu, Geist_Mono } from "next/font/google";
+import { Instrument_Sans, JetBrains_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
-import StarBackground from "@/components/ui/star-background";
 
-const ubuntu = Ubuntu({
-  weight: ["300", "400", "500", "700"],
+const instrumentSans = Instrument_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+/* Editorial serif reserved for the big display headings */
+const newsreader = Newsreader({
+  variable: "--font-display",
   subsets: ["latin"],
+  display: "swap",
+  style: ["normal", "italic"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Rayan Portfolio",
-  description: "Software Developer Portfolio of Muhammad Rayan Hassan",
+  title: "Rayan — Full Stack AI Engineer",
+  applicationName: "Rayan Hassan",
+  description:
+    "Portfolio of Muhammad Rayan Hassan. Building scalable full-stack applications with clean architecture and auditable AI reasoning.",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
 
@@ -29,11 +39,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={`${ubuntu.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`${instrumentSans.variable} ${newsreader.variable} ${jetbrainsMono.variable} font-sans antialiased bg-black text-zinc-100 selection:bg-white selection:text-black`}
       >
-        <StarBackground />
         {children}
       </body>
     </html>

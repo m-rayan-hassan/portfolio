@@ -1,117 +1,306 @@
 "use client";
 
-import Image from "next/image";
-import SectionWrapper from "@/components/ui/section-wrapper";
-// Removed unused Button import
-import { Github, Linkedin, Instagram, Twitter, Youtube } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-// Removed unused TypeAnimation import
-import { motion, Variants } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import {
+  ArrowDown,
+  ArrowRight,
+  ArrowUpRight,
+  Github,
+  Linkedin,
+} from "lucide-react";
+import {
+  SiAmazonwebservices,
+  SiDocker,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiTypescript,
+} from "react-icons/si";
 
-import { TypeAnimation } from 'react-type-animation';
-import HeroVectorAnimation from "@/components/ui/hero-vector-animation";
+const ExpertiseGlobe = dynamic(() => import("@/components/ui/globe-scene"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-[380px] w-full max-w-[540px] items-center justify-center sm:h-[460px] lg:h-[520px]">
+      <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-white/30" />
+    </div>
+  ),
+});
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
-  }
-};
+const socials = [
+  { name: "GitHub", href: "https://github.com/m-rayan-hassan", icon: Github },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/muhammad-rayan-hassan-ab6a93327/",
+    icon: Linkedin,
+  },
+];
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { 
-    opacity: 1, 
-    x: 0,
-    transition: { duration: 0.5, ease: "easeOut" }
-  }
-};
+const stack = [
+  { name: "TypeScript", icon: SiTypescript },
+  { name: "Next.js", icon: SiNextdotjs },
+  { name: "React", icon: SiReact },
+  { name: "Node.js", icon: SiNodedotjs },
+  { name: "Python", icon: SiPython },
+  { name: "PostgreSQL", icon: SiPostgresql },
+  { name: "AWS", icon: SiAmazonwebservices },
+  { name: "Docker", icon: SiDocker },
+];
 
-export default function Hero() {
+const ROLES = [
+  "Full Stack AI Engineer",
+  "Computer Science Student",
+  "Applied AI Systems Builder",
+];
+
+const MASK =
+  "radial-gradient(ellipse 78% 68% at 48% 34%, #000 32%, transparent 100%)";
+
+function HeroBackdrop() {
+  return (
+    <div
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+      aria-hidden="true"
+    >
+      {/* Technical grid, faded at the edges */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px)",
+          backgroundSize: "66px 66px",
+          maskImage: MASK,
+          WebkitMaskImage: MASK,
+        }}
+      />
+
+      {/* Both washes are painted as gradients rather than blurred layers: a
+          130px blur filter on a large element is one of the most expensive
+          things a page can composite while scrolling. */}
+      <div
+        className="absolute -right-[12%] top-[2%] h-[560px] w-[560px] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(255,255,255,0.075) 0%, rgba(255,255,255,0.03) 40%, transparent 72%)",
+        }}
+      />
+
+      <div
+        className="absolute -left-[16%] top-[14%] h-[500px] w-[500px] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.022) 42%, transparent 74%)",
+        }}
+      />
+
+      {/* Film grain keeps the flat black from feeling empty */}
+      <div
+        className="absolute inset-0 opacity-[0.04] mix-blend-soft-light"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+        }}
+      />
+    </div>
+  );
+}
+
+/* Rotating role line: types, holds, deletes, moves on. Static for reduced motion. */
+function RoleTicker() {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [text, setText] = useState(ROLES[0]);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    /* Reduced motion keeps the first role on screen, no typing */
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const word = ROLES[wordIndex];
+
+    let delay = deleting ? 26 : 52;
+    if (!deleting && text === word) delay = 2100;
+    if (deleting && text === "") delay = 280;
+
+    const timer = window.setTimeout(() => {
+      if (!deleting && text === word) {
+        setDeleting(true);
+        return;
+      }
+      if (deleting && text === "") {
+        setDeleting(false);
+        setWordIndex((index) => (index + 1) % ROLES.length);
+        return;
+      }
+      setText(
+        deleting ? word.slice(0, text.length - 1) : word.slice(0, text.length + 1)
+      );
+    }, delay);
+
+    return () => window.clearTimeout(timer);
+  }, [text, deleting, wordIndex]);
 
   return (
-    <SectionWrapper id="home" className="min-h-screen flex items-center pt-24">
-      <motion.div 
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full"
-      >
-        {/* Text Content */}
-        <div className="space-y-8 z-10">
-          <motion.div variants={itemVariants} className="flex items-center gap-2">
-            <span className="w-1 h-8 bg-neon-cyan/50 rounded-full"></span>
-            <div className="text-xl md:text-2xl font-medium text-zinc-300 tracking-wide flex gap-2">
-              I am a
-              <TypeAnimation
-                sequence={[
-                  'Full Stack AI Engineer',
-                  2000,
-                  'Computer Science Student',
-                  2000,
-                  'Applied AI Systems Builder',
-                  2000
-                ]}
-                wrapper="span"
-                speed={50}
-                className="text-neon-cyan font-bold"
-                repeat={Infinity}
-              />
+    <p className="hero-enter mt-5 flex h-6 items-center font-mono text-[12px] uppercase tracking-[0.14em] text-neutral-300 sm:text-[12.5px] sm:tracking-[0.16em]">
+      <span aria-hidden="true" className="whitespace-nowrap">
+        {text}
+        <span className="caret" />
+      </span>
+      <span className="sr-only">{ROLES.join(", ")}</span>
+    </p>
+  );
+}
+
+export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  /* Pointer spotlight: cheap, one CSS variable, disabled for touch/reduced motion */
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let frame = 0;
+    const onMove = (event: PointerEvent) => {
+      if (event.pointerType !== "mouse") return;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const rect = el.getBoundingClientRect();
+        el.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+        el.style.setProperty("--my", `${event.clientY - rect.top}px`);
+      });
+    };
+
+    el.addEventListener("pointermove", onMove);
+    return () => {
+      el.removeEventListener("pointermove", onMove);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  return (
+    <section
+      id="home"
+      ref={sectionRef}
+      className="relative isolate min-h-svh overflow-x-clip bg-[#070707]"
+    >
+      <HeroBackdrop />
+
+      {/* Cursor spotlight */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        aria-hidden="true"
+        style={{
+          background:
+            "radial-gradient(460px circle at var(--mx, 72%) var(--my, 26%), rgba(255,255,255,0.05), transparent 68%)",
+        }}
+      />
+
+      <div className="relative z-10 mx-auto flex min-h-svh w-full max-w-6xl flex-col justify-center px-6 pb-12 pt-28 md:pt-32">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-8">
+          {/* Text */}
+          <div className="lg:col-span-6">
+            <div
+              className="hero-enter flex items-center gap-3"
+              style={{ animationDelay: "0.04s" }}
+            >
+              <span className="h-px w-8 bg-white/25" aria-hidden="true" />
+              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-200">
+                Muhammad Rayan Hassan
+              </span>
             </div>
-          </motion.div>
 
-          <motion.div variants={itemVariants} className="space-y-2">
-            <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Hello, I'm
-            </h2>
-            <h1 className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-neon-cyan to-blue-500 pb-2">
-              Muhammad Rayan Hassan
+            <h1
+              className="hero-enter mt-7 text-[2.5rem] leading-[1.04] text-white sm:text-[3rem] lg:text-[3.4rem]"
+              style={{ animationDelay: "0.1s" }}
+            >
+              Production systems.
+              <span className="mt-1 block italic text-neutral-400">
+                AI you can audit.
+              </span>
             </h1>
-          </motion.div>
 
-          <motion.p variants={itemVariants} className="text-lg text-zinc-400 leading-relaxed max-w-xl">
-             Full Stack AI Engineer and CS student. I build scalable applications by integrating clean system architecture with auditable AI reasoning, creating production-ready tools that people can trust.
-          </motion.p>
+            <RoleTicker />
 
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-4">
-            <Link href="#projects" className="cursor-pointer px-8 py-3 rounded-full bg-gradient-to-r from-neon-cyan to-[#0099ff] text-white font-bold shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_30px_rgba(0,240,255,0.5)] transition-all transform hover:-translate-y-1">
-              View My Work
-            </Link>
-            <Link href="#contact" className="cursor-pointer px-8 py-3 rounded-full bg-white text-black font-bold hover:bg-zinc-200 transition-all transform hover:-translate-y-1">
-              Contact Me
-            </Link>
-          </motion.div>
+            <p
+              className="hero-enter mt-6 max-w-xl text-[16px] leading-[1.75] text-neutral-300"
+              style={{ animationDelay: "0.24s" }}
+            >
+              Full Stack AI Engineer and CS student. I build scalable
+              applications by integrating clean system architecture with
+              auditable AI reasoning, creating production-ready tools that
+              people can trust.
+            </p>
 
-          <motion.div variants={itemVariants} className="flex items-center gap-6 pt-8">
-            {[
-                { icon: Linkedin, href: "https://www.linkedin.com/in/muhammad-rayan-hassan-ab6a93327/" },
-                { icon: Github, href: "https://github.com/m-rayan-hassan" },
-            ].map((social, idx) => (
-              <Link key={idx} href={social.href} target="_blank" className="cursor-pointer text-zinc-400 hover:text-white transition-all">
-                <motion.div whileHover={{ scale: 1.2, rotate: 5 }} whileTap={{ scale: 0.9 }}>
-                  <social.icon className="w-6 h-6" />
-                </motion.div>
-              </Link>
-            ))}
-          </motion.div>
+            <div className="hero-enter mt-9" style={{ animationDelay: "0.3s" }}>
+              <div className="flex flex-wrap items-center gap-3">
+                <Link href="#projects" className="btn btn-primary group">
+                  See the work
+                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </Link>
+                <Link href="#contact" className="btn btn-ghost">
+                  Get in touch
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </div>
+
+              <div className="mt-6 flex items-center gap-6">
+                {socials.map(({ name, href, icon: Icon }) => (
+                  <Link
+                    key={name}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 text-[13px] text-neutral-400 transition-colors hover:text-white"
+                  >
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                    {name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Globe */}
+          <div
+            className="hero-enter-settle relative flex items-center justify-center lg:col-span-6 lg:justify-end"
+            style={{ animationDelay: "0.2s" }}
+          >
+            <ExpertiseGlobe />
+          </div>
         </div>
 
-        {/* 3D Character Placeholder / Image */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: true }}
-          className="relative flex justify-center items-center z-10"
+        {/* Stack strip */}
+        <div
+          className="hero-enter-fade mt-12 flex flex-col gap-5 border-t border-white/[0.08] pt-6 sm:mt-14 sm:flex-row sm:items-center sm:justify-between"
+          style={{ animationDelay: "0.44s" }}
         >
-            <HeroVectorAnimation />
-        </motion.div>
-      </motion.div>
-    </SectionWrapper>
+          <ul className="flex flex-wrap items-center gap-x-5 gap-y-3">
+            {stack.map(({ name, icon: Icon }) => (
+              <li
+                key={name}
+                className="inline-flex items-center gap-2 text-neutral-400 transition-colors hover:text-neutral-100"
+              >
+                <Icon className="h-4 w-4" aria-hidden="true" />
+                <span className="font-mono text-[11px] uppercase tracking-[0.14em]">
+                  {name}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <Link
+            href="#about"
+            className="group hidden items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-400 transition-colors hover:text-neutral-100 sm:inline-flex"
+          >
+            Scroll
+            <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 transition-transform duration-200 group-hover:translate-y-0.5">
+              <ArrowDown className="h-3 w-3" />
+            </span>
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }

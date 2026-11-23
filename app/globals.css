@@ -1,87 +1,301 @@
 @import "tailwindcss";
 
 :root {
-  /* Space Theme Colors */
-  --space-black: #050511; /* Very dark blue-black */
-  --space-blue-dark: #0a0a2e; /* Deep space blue */
-  --space-blue-light: #1e3a8a; /* Lighter blue for gradients */
-  --neon-cyan: #00f0ff; /* Glowing accents */
-  --starlight: #ffffff; /* Text and stars */
-  
-  --background: var(--space-black);
-  --foreground: var(--starlight);
-  
-  /* Card/Glass colors */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --background: #070707;
+  --foreground: #ededed;
+  --paper: #f7f5f1;
+  --ink: #070707;
+  --color-border: #27272a;
+  --color-border-light: #e4e4e7;
+  --color-muted: #71717a;
+  --color-muted-light: #a1a1aa;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-space-black: var(--space-black);
-  --color-space-blue-dark: var(--space-blue-dark);
-  --color-space-blue-light: var(--space-blue-light);
-  --color-neon-cyan: var(--neon-cyan);
-  --color-starlight: var(--starlight);
-  --color-glass-bg: var(--glass-bg);
-  --color-glass-border: var(--glass-border);
-  
-  --font-mono: var(--font-geist-mono);
-  
-  --font-weight-semibold: 500;
-  --font-weight-bold: 500;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Ensure dark mode stays consistent with our theme */
-    --background: var(--space-black);
-    --foreground: var(--starlight);
-  }
+  --color-border: var(--color-border);
+  --color-border-light: var(--color-border-light);
+  --color-muted: var(--color-muted);
+  --color-muted-light: var(--color-muted-light);
 }
 
 html {
-  background-color: var(--space-black);
+  background-color: var(--ink);
+  color: #ededed;
+  scroll-behavior: smooth;
+  /* Sections carry their own top padding, so anchors land on the section edge
+     instead of leaving a strip of the previous section under the header. */
+  scroll-padding-top: 0;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: transparent;
-  isolation: isolate;
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  background-color: var(--ink);
+  color: #ededed;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
   overflow-x: hidden;
-  overflow-y: scroll;
   min-height: 100vh;
-  overscroll-behavior-y: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar */
+/* Display type: an editorial serif for the large headings, sans for the rest */
+h1,
+h2,
+.font-display {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+/* Two grounds only: warm paper and near-black ink */
+.section-paper {
+  background-color: var(--paper);
+  color: #141414;
+}
+
+.section-ink {
+  background-color: var(--ink);
+  color: #f6f6f4;
+}
+
+.section-paper ::selection {
+  background: #101010;
+  color: var(--paper);
+}
+
+/* ── Shared controls ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.8rem 1.4rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.18s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: #f4f4f2;
+  color: #0a0a0a;
+}
+
+.btn-primary:hover {
+  background: #ffffff;
+  box-shadow: 0 10px 28px -16px rgba(255, 255, 255, 0.45);
+}
+
+.section-paper .btn-primary {
+  background: #0d0d0d;
+  color: #fafafa;
+}
+
+.section-paper .btn-primary:hover {
+  background: #000000;
+  box-shadow: 0 12px 28px -18px rgba(0, 0, 0, 0.7);
+}
+
+.btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #f2f2f0;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.section-paper .btn-ghost {
+  border-color: rgba(10, 10, 10, 0.16);
+  color: #141414;
+}
+
+.section-paper .btn-ghost:hover {
+  border-color: rgba(10, 10, 10, 0.34);
+  background: rgba(10, 10, 10, 0.03);
+}
+
+/* Small mono label used as the kicker on every section */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+/* A hairline that draws itself under a link on hover */
+.link-draw {
+  position: relative;
+}
+
+.link-draw::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  opacity: 0.45;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.link-draw:hover::after,
+.link-draw:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--space-black);
+  background: var(--ink);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--space-blue-dark);
-  border-radius: 5px;
+  background: #333;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--neon-cyan);
+  background: #555;
 }
 
-/* Utility for glass effect */
-.glass-panel {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
+::selection {
+  background: rgba(255, 255, 255, 0.9);
+  color: #000000;
 }
 
-/* Reduce bold intensity globally */
-b, strong {
+/* Hero entrance: CSS-driven so the copy paints even before hydration */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-settle {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-enter {
+  animation: hero-rise 0.75s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.hero-enter-fade {
+  animation: hero-fade 0.9s ease-out both;
+}
+
+.hero-enter-settle {
+  animation: hero-settle 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* Typewriter caret under the headline */
+@keyframes caret-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.caret {
+  display: inline-block;
+  width: 1px;
+  height: 0.95em;
+  margin-left: 2px;
+  vertical-align: -0.1em;
+  background: currentColor;
+  animation: caret-blink 1.1s steps(1) infinite;
+}
+
+/* OrbitControls pins touch-action to none, which would trap page scroll over the
+   hero on phones. Vertical swipes keep scrolling; horizontal drags still rotate. */
+.globe-canvas canvas {
+  touch-action: pan-y !important;
+}
+
+/* Orbit label chips: positioned from the 3D scene each frame */
+.globe-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(6, 6, 6, 0.94);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 11px;
   font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.9);
+  will-change: transform, opacity;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

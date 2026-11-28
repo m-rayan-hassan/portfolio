@@ -15,7 +15,10 @@ export function RMark({
       width={160}
       height={160}
       unoptimized
-      className={cn("h-9 w-9 shrink-0 rounded-[5px]", className)}
+      className={cn(
+        "h-10 w-10 shrink-0 rounded-[5px] object-contain",
+        className
+      )}
     />
   );
 }
@@ -30,13 +33,10 @@ export function Wordmark({
   markSrc?: string;
 }) {
   return (
-    <span className={cn("flex items-center gap-2.5 leading-none", className)}>
+    <span className={cn("inline-flex items-center gap-2.5 leading-none", className)}>
       <RMark className={markClassName} src={markSrc} />
-      <span className="flex items-baseline font-display text-[19px] italic leading-none tracking-[-0.01em]">
+      <span className="translate-y-[3px] font-display text-[19px] italic leading-none tracking-[-0.01em]">
         Rayan
-        <span className="-ml-[3px] font-mono text-[11px] leading-none tracking-[0.06em] opacity-55">
-          .dev
-        </span>
       </span>
     </span>
   );

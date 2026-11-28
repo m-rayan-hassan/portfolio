@@ -36,11 +36,11 @@ export default function Footer() {
           <div className="md:col-span-6">
             <Link
               href="/"
-              className="inline-flex text-neutral-900"
+              className="inline-flex items-center text-neutral-900"
               aria-label="Rayan Hassan, home"
             >
               <Wordmark
-                markClassName="h-9 w-9"
+                markClassName="h-10 w-10"
                 markSrc="/logo2.png"
                 className="gap-2.5"
               />

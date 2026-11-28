@@ -153,14 +153,14 @@ export default function Navbar() {
         <Link
           href="/"
           className={cn(
-            "group transition-colors",
+            "group inline-flex items-center transition-colors",
             brandText,
             !onDark && "text-neutral-900"
           )}
           aria-label="Rayan Hassan, home"
         >
           <Wordmark
-            markClassName="h-[36px] w-[36px]"
+            markClassName="h-10 w-10"
             markSrc={isOpen || onDark ? "/logo.png" : "/logo2.png"}
           />
         </Link>

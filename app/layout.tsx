@@ -23,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rayan — Full Stack AI Engineer",
+  title: "Rayan Hassan | Computer Science & AI",
   applicationName: "Rayan Hassan",
   description:
     "Portfolio of Muhammad Rayan Hassan. Building scalable full-stack applications with clean architecture and auditable AI reasoning.",
